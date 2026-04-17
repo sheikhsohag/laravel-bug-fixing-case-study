@@ -1,5 +1,4 @@
 <?php
-<?php
 
 namespace App\Http\Controllers\Auth;
 
@@ -17,8 +16,8 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-           'email' => 'required|email',
-           'password' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|string',
         ]);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
