@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    // public user list (no auth required)
+    public function publicIndex()
+    {
+        $users = [
+            (object)['id' => 1, 'name' => 'John Doe', 'email' => 'john@example.com'],
+            (object)['id' => 2, 'name' => 'Jane Smith', 'email' => 'jane@example.com'],
+            (object)['id' => 3, 'name' => 'Bob Wilson', 'email' => 'bob@example.com'],
+        ];
+        return view('user.public', compact('users'));
+    }
+
     // shows only users with role = 'admin'
     public function index()
     {

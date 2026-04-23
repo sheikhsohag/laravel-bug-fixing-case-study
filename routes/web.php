@@ -21,6 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('users', [UserController::class, 'publicIndex'])->name('users.public');
+
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
@@ -34,7 +36,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    // user list: shows only users with role = 'admin'
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    // admin list: shows only users with role = 'admin'
+    Route::get('admins', [UserController::class, 'index'])->name('users.index');
     Route::get('profile/{id}', [UserController::class, 'show'])->name('users.show');
 });
